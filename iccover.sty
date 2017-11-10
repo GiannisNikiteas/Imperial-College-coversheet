@@ -1,0 +1,175 @@
+%% Author: Ioannis Nikiteas
+%% version: 0.1
+%% Imperial College London Coversheet
+%% Start of `iccover.sty`
+\ProvidesPackage{iccover}[2017/10/28 Imperial College cover page]
+\RequirePackage{etoolbox}
+\RequirePackage{graphicx}
+\RequirePackage{tabularx}
+%\RequirePackage{hyperref} %TODO: add non-conflict requirement\\
+%\RequirePackage[linewidth=1pt]{mdframed}
+\RequirePackage[textwidth=20cm, textheight=27.5cm]{geometry}
+
+%% CID 
+\newcommand{\@cid}{}
+\newcommand{\cid}[1]{\gdef\@cid{#1}}
+%% Group name 
+\newcommand{\@group}{}
+\newcommand{\group}[1]{\gdef\@group{#1}}
+%% Tutor name 
+\newcommand{\@tutor}{}
+\newcommand{\tutor}[1]{\gdef\@tutor{#1}}
+% Marker's name 
+\newcommand{\@marker}{}
+\newcommand{\marker}[1]{\gdef\@marker{#1}}
+%% Deadline of project
+\newcommand{\@deadline}{}
+\newcommand{\deadline}[1]{\gdef\@deadline{#1}}
+%% Wordcount of project
+\newcommand{\@wordcount}{}
+\newcommand{\wordcount}[1]{\gdef\@wordcount{#1}}
+
+%% Author's signature
+\newcommand*{\signature}[2][]{%
+	\gdef\@signature@params{#1}%
+	\gdef\@signature{#2}%
+}%
+\newcommand*{\@signature@params}{}
+\newcommand*{\@signature}{}
+%% Crest
+\newcommand*{\crest}[2][]{%
+	\gdef\@crest@params{#1}%
+	\gdef\@crest{#2}%
+}%
+\newcommand*{\@crest@params}{}
+\newcommand*{\@crest}{}
+
+
+%% Redefining \maketitle
+\renewcommand{\maketitle}{%
+   \setlength{\parindent}{\z@}
+   \setlength{\parskip}{\z@}
+   \typeout{Typesetting the titlepage}
+   {\textbf{Name:~\centering\large\normalfont\@author} \hfill% TODO: convert Name in capitals
+   	~
+   	\textbf{CID:~\centering\normalfont\@cid} \hfill
+   	~
+   	\textbf{Lab/Tutor Group:~\normalfont\@group}}
+   
+   \hfill \textbf{Tutor:~\normalfont\@tutor}
+   
+   \textbf{Title of Coursework:~\large\normalfont\@title}	
+   
+   \textbf{To be marked by:~\normalfont\@marker}
+   
+   \textbf{Deadline:~\normalfont\@deadline} \hfill \textbf{Word Count:~\normalfont\@wordcount}
+   \\ \\
+   \fbox{\begin{minipage}{\linewidth}
+   		The completed coursework must be ‘posted’ in the red letter box or brown coursework box outside the Student Office (G03a) BY THE DATE GIVEN ABOVE.\\
+   		\textit{Failure to do this may result in a loss of marks.}
+   \end{minipage}}
+   \vskip 0.2cm
+   \fbox{\begin{minipage}{\linewidth}
+   		\textbf{Plagiarism} \hfill
+   		
+   		You are reminded that all work submitted as part of the requirement for any examination (including coursework) of Imperial College must be expressed in your own words and incorporate your own ideas and judgements.
+   		\vskip 0.2cm
+   		Plagiarism, that is the presentation of another person’s thoughts or words as though they were your own, must be avoided with particular care in coursework, essays and reports written in your own time.  Note that you are encouraged to read and criticise the work of others as much as possible.  You are expected to incorporate this in your thinking and in your coursework and assessments.  But you must acknowledge and label your sources.
+   		\vskip 0.2cm
+   		Direct quotations from the published or unpublished work of others, from the internet, or from any other source must always be clearly identified as such.  A full reference to their source must be provided in the proper form and quotation marks used.  Remember that a series of short quotations from several different sources, if not clearly identified as such, constitutes plagiarism just as much as a single unacknowledged long quotation from a single source.  Equally, if you summarise another person’s ideas, judgements, figures, diagrams or software, you must refer to that person in your text, and include the work referred to in your bibliography.  Departments are able to give advice about the appropriate use and correct acknowledgement of other sources in your own work.
+   		\vskip 0.2cm
+   		The direct and unacknowledged repetition of your own work which has already been submitted for assessment can constitute self-plagiarism.  When group work is submitted, this should be presented in a way approved by your department.  You should therefore consult your tutor or course director if you are in any doubt about what is permissible.  You should be aware that you have a collective responsibility for the integrity of group work submitted for assessment.
+   		\vskip 0.2cm
+   		The use of the work of another student, past or present, constitutes plagiarism.  Where work is used without the consent of that student, this will normally be regarded as a major offence of plagiarism.
+   		\vskip 0.2cm
+   		Failure to observe any of these rules may result in an allegation of cheating.  Cases of suspected plagiarism will be dealt with under the College’s Procedure for Dealing with Examination Offences and may result in a penalty being taken against any student found guilty of plagiarism.
+   \end{minipage}}
+   \vskip 0.2cm
+   %TODO: Add if statement of box is ticked, then add partners names
+   %TODO: Fix overlaping signatures with hlines
+   \fbox{\begin{minipage}{\linewidth}
+   		\textbf{Was this a group assessment?}~
+%   		\CheckBox[name=mycheckbox]{Yes:}\\%	Interactive Box
+		\framebox(10,10){}\\	
+   		\textbf{If yes all group members must sign below:}
+   		\\ \\
+   		\begin{tabularx}{0.4\textwidth}{|X|X|}
+   			\hline
+   			\textbf{Name} & \textbf{Signature} \\
+   			\hline
+   			&					   \\
+   			\hline
+   			&					   \\
+   			\hline
+   			&					   \\
+   			\hline
+   			&					   \\
+   			\hline
+   			&					   \\
+   			\hline
+   			&					   \\
+   			\hline
+   		\end{tabularx}	
+   \end{minipage}}\\
+   
+   \textbf{THE FOLLOWING DECLARATION MUST BE SIGNED BY THE STUDENT ON PRESENTATION OF EACH COURSEWORK ASSIGNMENT}\\
+   
+   \textbf{I declare that this assignment is entirely my own work in accordance with the above regulations.}
+   \\
+   \textbf{Signed: }~
+   \expandafter\includegraphics\expandafter[\@signature@params]{\@signature} %TODO: make \gdef for image import
+   \vfil
+   \newgeometry{textwidth=17cm,textheight=24cm} %TODO: Pass as user arguments the size of the report
+
+\begin{titlepage}   
+%% This is the standard title page of article.cls
+   \let\footnotesize\small
+   \let\footnoterule\relax
+   \let \footnote \thanks
+   \null\vfil
+   \vskip 60 \p@
+   \begin{center}%
+%	{\expandafter\includegraphics\expandafter[\@crest@params]{\@crest} \par}%TODO: Add contional statement to check if \@crest empty, possible redefiniton of \@crest may be required.
+	\vskip 4em%
+   	{\LARGE \@title \par}%
+   	\vskip 3em%
+   	{\large
+   		\lineskip .75em%
+   		\begin{tabular}[t]{c}%
+   			\@author
+   		\end{tabular}\par}%
+   	\vskip 1.5em%
+   	{\large \@date \par}%       % Set date in \large size.
+   \end{center}\par
+	\vskip 3em%
+    \csname @abstract\endcsname%
+\end{titlepage}%
+
+
+
+\setcounter{footnote}{0}%No page num
+\global\let\thanks\relax
+\global\let\maketitle\relax
+\global\let\@thanks\@empty
+\global\let\@author\@empty
+\global\let\@date\@empty
+\global\let\@title\@empty
+\global\let\title\relax
+\global\let\author\relax
+\global\let\date\relax
+\global\let\and\relax
+}
+
+\def\@abstract{}
+
+\renewcommand{\abstract}[1]{%
+	\long\def\@abstract{%
+		\begin{center}%
+			\bfseries \abstractname%
+		\end{center}%
+		\begin{quotation}#1\par\end{quotation}%
+		\vspace{\bigskipamount}%
+	}%
+}
+
+%% End of `ic-cover.sty`
